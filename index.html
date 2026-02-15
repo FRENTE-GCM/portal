@@ -1,0 +1,1706 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FRENTE GCM - Em Defesa da Valorização Profissional</title>
+  <meta name="description" content="Frente GCM - Associação dos Guardas Civis Municipais de Salvador. Defesa e valorização profissional."/>
+  <meta name="author" content="FRENTE GCM">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="FRENTE GCM" />
+  <meta property="og:description" content="Associação dos Guardas Civis Municipais de Salvador." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a3a5f'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23ffd700'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    :root{
+      --primary:#1a3a5f;
+      --secondary:#2c5a8c;
+      --accent:#ff6b35;
+      --gold:#ffd700;
+      --light:#ffffff;
+      --bg:#f4f7fc;
+      --text:#343a40;
+      --danger:#dc3545;
+      --success:#28a745;
+      --border-color: #e6e9ee;
+      --shadow-color: rgba(0,0,0,.07);
+      --transition:.28s;
+      --card-radius:12px;
+    }
+    body[data-theme='dark']{
+      --primary:#4dabf7;
+      --secondary:#228be6;
+      --accent:#f76707;
+      --gold:#fcc419;
+      --light:#2c2e33;
+      --bg:#1a1b1e;
+      --text:#e9ecef;
+      --danger:#f03e3e;
+      --success:#37b24d;
+      --border-color: #495057;
+      --shadow-color: rgba(0,0,0,.3);
+    }
+
+    *{box-sizing:border-box}
+    body{font-family:'Open Sans',sans-serif;margin:0;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;transition:background-color var(--transition),color var(--transition)}
+    .container{width:92%;max-width:1180px;margin:0 auto;padding:0 12px}
+
+    header.hero{
+      background: linear-gradient(180deg, rgba(26,58,95,0.94), rgba(26,58,95,0.86)),
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600"><rect fill="%231a3a5f" width="1600" height="600"/><path fill="%232c5a8c" d="M0,0 L1600,600 L0,600 Z"/></svg>');
+      background-size:cover;
+      color: #fff;
+      padding:72px 0 68px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    header .container h1{font-family:'Montserrat',sans-serif;font-size:3rem;margin:0 0 .4rem;letter-spacing:1px}
+    header .container h2{font-family:'Montserrat',sans-serif;font-size:1.4rem;color:var(--gold);margin:0 0 12px}
+    header .container p{max-width:760px;margin:0 auto 18px;font-size:1.05rem}
+
+    nav{background:var(--light);position:sticky;top:0;z-index:1200;box-shadow:0 6px 20px var(--shadow-color); transition: background-color var(--transition);}
+    nav .container{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;flex-grow:1;justify-content:center;}
+    nav a{display:inline-block;padding:8px 16px;text-decoration:none;color:var(--primary);font-weight:700;border-radius:22px;transition:all var(--transition)}
+    nav a:hover, nav a.active{background:var(--primary);color:var(--light);transform:translateY(-2px)}
+
+    section{padding:58px 0; display: none;}
+    section.visible{display: block;}
+    h2.section-title, h3.section-title{font-family:'Montserrat',sans-serif;color:var(--primary);font-size:1.9rem;text-align:center;margin:0 0 18px}
+    h3.section-title{font-size:1.6rem; margin-top: 40px;}
+
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .feature-card{background:var(--light);padding:20px;border-radius:var(--card-radius);box-shadow:0 8px 28px var(--shadow-color);text-align:center;border-top:4px solid var(--primary); transition: all var(--transition);}
+    .form-container, .leadership-card{background:var(--light); transition: background-color var(--transition);}
+
+    .form-container{max-width:980px;margin:0 auto;padding:26px;border-radius:14px;box-shadow:0 24px 60px var(--shadow-color);border:1px solid var(--border-color)}
+    fieldset{border:1px solid var(--border-color);padding:16px;border-radius:10px;margin-bottom:14px}
+    legend{font-family:'Montserrat',sans-serif;color:var(--primary);padding:0 8px;font-weight:700}
+    label{display:block;margin-bottom:8px;font-weight:600;color:var(--primary)}
+    input,select,textarea{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--border-color);font-size:1rem;background:transparent;color:inherit;transition:all var(--transition)}
+    input.error, select.error{border-color:var(--danger);background-color:rgba(220,53,69,0.05)}
+    input.valid{border-color:var(--success);background-color:rgba(40,167,69,0.05)}
+    input.valid::after{content:'✓';color:var(--success)}
+    input:read-only{background-color:rgba(108,117,125,0.1);color:#6c757d;cursor:not-allowed}
+    input:focus,select:focus,textarea:focus{outline:3px solid rgba(77,171,247,.3);outline-offset:2px;border-color:var(--primary)}
+    .form-row{display:flex;gap:12px;flex-wrap:wrap}
+    .form-row>.col{flex:1;min-width:160px;position:relative}
+
+    .input-wrapper{position:relative}
+    .input-icon{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:1.2rem;opacity:0;transition:opacity .3s}
+    .input-icon.show{opacity:1}
+    .input-icon.success{color:var(--success)}
+    .input-icon.error{color:var(--danger)}
+
+    .btn{display:inline-block;background:linear-gradient(45deg,var(--accent),#ff8c35);color:#fff;padding:12px 26px;border-radius:28px;border:none;font-weight:800;cursor:pointer;transition:all var(--transition);font-size:1rem}
+    .btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,53,0.3)}
+    .btn.ghost{background:transparent;color:var(--primary);border:2px solid var(--primary)}
+    .btn.ghost:hover:not(:disabled){background:var(--primary);color:var(--light)}
+    .btn:disabled{opacity:.6;cursor:not-allowed;transform:none !important}
+
+    .btn-loading{position:relative;color:transparent !important}
+    .btn-loading::after{content:'';position:absolute;width:20px;height:20px;top:50%;left:50%;margin-top:-10px;margin-left:-10px;border:2px solid transparent;border-top:2px solid #fff;border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+    .leadership-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
+    .leadership-card{padding:18px;border-radius:12px;box-shadow:0 8px 26px var(--shadow-color);display:flex;flex-direction:column;align-items:center;gap:10px;border-left:6px solid rgba(255,215,0,0.06)}
+    .leadership-avatar{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(44,90,140,0.06),rgba(44,90,140,0.02));border:2px solid rgba(44,90,140,0.06);font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.8rem;color:var(--primary)}
+    .leadership-card h4{font-family:'Montserrat',sans-serif;margin:0;color:var(--primary);font-size:1rem;text-align:center}
+    .leadership-card p{margin:0;font-size:.95rem;color:var(--accent);text-align:center}
+
+    #resultado{display:none;text-align:center;padding:18px; animation: fadeIn 0.5s ease-in;}
+    .success-animation{font-size:4rem;margin-bottom:20px;animation:bounce 1s}
+    @keyframes bounce{0%,20%,60%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}80%{transform:translateY(-5px)}}
+    
+    .welcome-badge{
+      background:linear-gradient(145deg, var(--primary), var(--secondary));
+      padding:30px;
+      border-radius:12px;
+      margin:20px 0;
+      position: relative;
+      color: var(--light);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .welcome-badge::before {
+      content: '🛡️';
+      font-size: 50px;
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-shadow: none;
+    }
+    .welcome-badge h4{
+      color: var(--gold);
+      margin-bottom:15px;
+      font-size:1.4rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .welcome-badge p {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+
+    footer{background:#1a2533;color:white;padding:26px 0;margin-top:26px;border-top:4px solid var(--gold);text-align:center}
+
+    .toast-container{position:fixed;top:18px;right:18px;z-index:9999;display:flex;flex-direction:column;gap:10px}
+    .toast{padding:12px 18px;border-radius:8px;color:#fff;transform:translateX(calc(100% + 18px));opacity:0;transition:all .35s cubic-bezier(.21,.98,.63,1.02);max-width:320px;box-shadow:0 8px 25px var(--shadow-color)}
+    .toast.show{transform:none;opacity:1}
+    .toast.success{background:var(--success)}
+    .toast.error{background:var(--danger)}
+    .toast.info{background:var(--secondary)}
+
+    .form-step{display:none;animation:fadeIn 0.5s ease-in}
+    .form-step.active{display:block}
+    .form-navigation{display:flex;justify-content:space-between;margin-top:20px;gap:10px}
+    .form-progress{display:flex;justify-content:center;margin-bottom:30px;gap:8px}
+    .progress-step{width:12px;height:12px;border-radius:50%;background:var(--border-color);transition:all var(--transition);position:relative}
+    .progress-step.active{background:var(--accent);transform:scale(1.2)}
+    .progress-step.completed{background:var(--success)}
+
+    .termos-container{background:linear-gradient(135deg, rgba(255,107,53,0.05), rgba(26,58,95,0.05));padding:20px;border-radius:10px;border:2px solid rgba(255,107,53,0.2);margin-top:20px}
+    .termos-content{max-height:300px;overflow-y:auto;padding:15px;background:rgba(255,255,255,0.7);border-radius:8px;margin-bottom:15px;border:1px solid var(--border-color)}
+    body[data-theme='dark'] .termos-content{background:rgba(0,0,0,0.2)}
+    
+    .termos-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .termos-checkbox input[type="checkbox"] {
+      display: none; /* Oculta o checkbox padrão */
+    }
+    .termos-checkbox .custom-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .termos-checkbox .custom-checkbox .checkmark {
+      font-size: 20px;
+      color: var(--light);
+      transform: scale(0);
+      transition: transform var(--transition);
+    }
+    .termos-checkbox input[type="checkbox"]:checked + .custom-checkbox {
+      background-color: var(--success);
+      border-color: var(--success);
+    }
+    .termos-checkbox input[type="checkbox"]:checked + .custom-checkbox .checkmark {
+      transform: scale(1);
+    }
+    .termos-text{font-size:0.95rem;line-height:1.5;margin:0}
+    .termos-nome{color:var(--accent);font-weight:700}
+
+    .error-message{color:var(--danger);font-size:0.85rem;margin-top:4px;display:none}
+    .error-message.show{display:block}
+
+    .dependente-item{border:1px dashed var(--border-color);padding:12px;border-radius:8px;margin-top:8px;background:rgba(0,0,0,0.01);position:relative}
+    body[data-theme='dark'] .dependente-item{background:rgba(255,255,255,0.02)}
+    .dependente-item h5{margin:0 0 8px 0;color:var(--primary);font-size:0.9rem}
+
+    .animate-on-scroll{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease-out, transform 0.6s ease-out;}
+    .animate-on-scroll.is-visible{opacity:1;transform:translateY(0);}
+    
+    #cep-unlock-hint{font-size:0.8rem;color:var(--secondary);margin-top:4px;display:none;}
+
+    .theme-switch-wrapper{display:flex;align-items:center}
+    .theme-switch{display:inline-block;height:24px;position:relative;width:44px}
+    .theme-switch input{display:none}
+    .slider{background-color:#ccc;bottom:0;cursor:pointer;left:0;position:absolute;right:0;top:0;transition:.4s;border-radius:24px}
+    .slider:before{background-color:#fff;bottom:2px;content:"";height:20px;left:2px;position:absolute;transition:.4s;width:20px;border-radius:50%}
+    input:checked+.slider{background-color:var(--primary)}
+    input:checked+.slider:before{transform:translateX(20px)}
+    .slider.round{border-radius:34px}
+    .slider.round:before{border-radius:50%}
+    .theme-switch-wrapper svg{width:16px;height:16px;margin:0 6px;color:var(--primary)}
+
+    .draft-notice{background:var(--gold);color:#000;padding:8px;text-align:center;font-size:0.9rem;font-weight:600;display:none}
+    .draft-notice.show{display:block}
+
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9998;display:none;align-items:center;justify-content:center}
+    .modal-overlay.show{display:flex}
+    .modal{background:var(--light);padding:30px;border-radius:12px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
+    .modal h3{color:var(--primary);margin-top:0}
+    .modal-buttons{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
+    
+    #loading-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(26, 58, 95, 0.85);
+      z-index: 10000;
+      display: none; /* Inicia oculto */
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #loading-overlay .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    #loading-overlay p {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    
+    @media (max-width: 768px) {
+
+  /* ===== HEADER / HERO ===== */
+  .hero-content {
+    flex-direction: column;     /* logo em cima, texto embaixo */
+    text-align: center;
+  }
+
+  .logo {
+    height: 100px;              /* tamanho seguro da logo no celular */
+    margin-bottom: 12px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  header .container h1 {
+    font-size: 1.8rem;
+  }
+
+  header .container h2 {
+    font-size: 1rem;
+  }
+
+  header .container p {
+    font-size: 0.95rem;
+  }
+
+  /* ===== NAV ===== */
+  nav ul {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  /* ===== GRID / CARDS ===== */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leadership-avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 1.4rem;
+  }
+
+  /* ===== FORM ===== */
+  .form-navigation {
+    flex-direction: column;
+  }
+
+  .form-navigation .btn {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row > .col {
+    min-width: 100%;
+  }
+
+  .termos-checkbox {
+    flex-direction: row;
+    align-items: center;
+  }
+
+}
+
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  height: 250px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 700px;
+  text-align: center;
+}
+
+
+  </style>
+<style>
+  footer a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+</style>
+
+</head>
+
+<body>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+  <div id="loading-overlay">
+    <div class="spinner">
+</div>
+    <p>Enviando seus dados, aguarde...</p>
+  </div>
+
+  <div class="draft-notice" id="draft-notice">
+    📝 Rascunho recuperado! Seus dados foram restaurados automaticamente.
+  </div>
+
+  <header class="hero" role="banner">
+  <div class="container hero-content">
+
+    <img src="images/logo-frente-gcm.png" alt="Logo Frente GCM" class="logo">
+
+    <div class="hero-text">
+      <h1>FRENTE GCM</h1>
+      <h2>EM DEFESA DA VALORIZAÇÃO PROFISSIONAL</h2>
+      <p>Junte-se à nossa luta pela valorização dos Guardas Civis Municipais de Salvador</p>
+      <button id="hero-cta" class="btn">ASSOCIE-SE</button>
+    </div>
+
+  </div>
+</header>
+
+  <nav role="navigation" aria-label="Principal">
+    <div class="container">
+      <ul>
+        <li><a href="#inicio" class="nav-link active" data-target="inicio">Início</a></li>        
+        <li><a href="#sobre" class="nav-link" data-target="sobre">Sobre Nós</a></li>
+        <li><a href="#estatuto" class="nav-link" data-target="estatuto">Estatuto</a></li>
+        <li><a href="#diretoria" class="nav-link" data-target="diretoria">Diretoria</a></li>
+        <li><a href="#associacao" class="nav-link" data-target="associacao">Associe-se</a></li>
+        <li><a href="#contato" class="nav-link" data-target="contato">Contato</a></li>
+      </ul>
+      <div class="theme-switch-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <label class="theme-switch" for="theme-toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider round"></span>
+        </label>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="inicio" class="visible">
+      <div class="container">
+        <h2 class="section-title">POR QUE SER ASSOCIADO?</h2>
+        <div class="features-grid">
+          <div class="feature-card animate-on-scroll"><div style="font-size:30px">⚖️</div><h3>Assessoria Jurídica</h3><p>Defesa especializada na área penal, administrativa e trabalhista.</p></div>
+          <div class="feature-card animate-on-scroll"><div style="font-size:30px">🛡️</div><h3>Representação Forte</h3><p>Voz ativa nas negociações e decisões que impactam a categoria.</p></div>
+          <div class="feature-card animate-on-scroll"><div style="font-size:30px">💼</div><h3>Desenvolvimento</h3><p>Oportunidades de crescimento profissional e capacitação contínua.</p></div>
+          <div class="feature-card animate-on-scroll"><div style="font-size:30px">💙🤍</div><h3>Apoio Psicológico</h3><p>Com profissionais qualificados e atendimento humanizado, a FRENTE GCM oferece atendimento psicológico gratuito e sigiloso aos filiados, cuidando de quem cuida de nossa cidade.</p></div>
+          <div class="feature-card animate-on-scroll"><div style="font-size:30px">🤝</div><h3>União e Networking</h3><p>Fortaleça laços e crie uma rede de apoio com colegas da corporação.</p></div>
+        </div>
+      </div>
+    </section>
+<section id="estatuto" class="section">
+  <div class="container">
+    <h2>Estatuto</h2>
+
+    <p>Confira abaixo o Estatuto da FRENTE GCM:</p>
+
+    <div style="width: 100%; height: 800px; margin-bottom: 20px;">
+      <iframe 
+        src="https://drive.google.com/file/d/1HuK6g8aORfTfSpzCY31Ak31ZobmDlXVf/preview"
+        width="100%" 
+        height="100%" 
+        style="border: 1px solid #ccc;">
+      </iframe>
+    </div>
+
+    <a 
+      href="https://drive.google.com/file/d/1HuK6g8aORfTfSpzCY31Ak31ZobmDlXVf/view"
+      target="_blank" 
+      rel="noopener noreferrer">
+      ⬇️ Baixar Estatuto (PDF)
+    </a>
+  </div>
+</section>
+  <section id="diretoria">
+  <div class="container">
+<p style="text-align:center; margin-bottom:28px; font-weight:600; color:var(--primary);">
+  MANDATO: 06/06/2024 a 01/01/2030
+</p>
+
+
+    
+    <h3 class="section-title">Conselho Deliberativo</h3>
+    <div class="leadership-grid">
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">AL</div><h4>André Luís Silva Rocha</h4><p>Presidente</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">VO</div><h4>Valnísio de Oliveira</h4><p>Vice-Presidente</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">JE</div><h4>José Eduardo Silva Menezes</h4><p>Diretor Financeiro</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">AS</div><h4>Adriana Santana Alves</h4><p>Diretora Administrativa</p></div>
+    </div>
+
+    <h3 class="section-title">Diretoria Executiva</h3>
+    <div class="leadership-grid">
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">LF</div><h4>Lucilene França Mendes</h4><p>Diretora de Assuntos Jurídicos</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">TC</div><h4>Thales Cardoso Lemos</h4><p>Diretor de Apoio Psicossocial e Promoção de Eventos, Esporte e Lazer</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">MA</div><h4>Marcos Alves do Sacramento</h4><p>Dir. de Direitos Humanos e Desenv. Socioprofissional</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">JN</div><h4>José Claudio da Silva Nunes</h4><p>Dir. de Atenção aos GCMs (Serviço Administrativo)</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">MP</div><h4>Marcos Paulo Alvim Porto</h4><p>Dir. de Atenção aos GCMs (Serviço Operac. Patrimonial)</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">MC</div><h4>McGarrett Cruz de Alcântara</h4><p>Dir. de Atenção aos GCMs (Serviço Operac. Móvel)</p></div>
+      </div>
+
+    <h3 class="section-title">Conselho Fiscal</h3>
+    <div class="leadership-grid">
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">EB</div><h4>Elenildo Barbosa dos Santos</h4><p>Conselheiro Fiscal (Titular)</p></div>
+     <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">LR</div><h4>Leandro Reis Cardoso</h4><p>Conselheiro Fiscal (Titular)</p></div>
+    <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">DV</div><h4>Davi Velozo da Silva</h4><p>Conselheiro Fiscal (Titular)</p></div>
+     <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">AF</div><h4>Adenilton Ferreira da Silva</h4><p>Conselheiro Fiscal (Suplente)</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">ML</div><h4>Maria Letícia Nobre Moura</h4><p>Conselheira Fiscal (Suplente)</p></div>
+      <div class="leadership-card animate-on-scroll"><div class="leadership-avatar">JA</div><h4>Joselito Anunciação de Souza</h4><p>Conselheiro Fiscal (Suplente)</p></div>
+    </div>
+
+  </div>
+</section>
+
+    <section id="associacao" aria-labelledby="associacao-title">
+      <div class="container">
+        <h2 id="associacao-title" class="section-title">JUNTE-SE À NOSSA CAUSA</h2>
+
+        <div class="form-container" id="form-area">
+          <form id="form-associacao" 
+                action="https://script.google.com/macros/s/AKfycbxW_9uvRb_PC6Ni7C2wEH1NKOj7P0hqE6WKQbhrT-KmZwOLxxt2vSBH9DQYxpwlOzggSQ/exec" 
+                method="POST" 
+                target="hidden_iframe"
+                novalidate>
+            
+            <div id="dataEnvio-wrapper" style="display: none;"></div>
+
+            <div class="form-progress">
+              <div class="progress-step active" data-step="1"></div>
+              <div class="progress-step" data-step="2"></div>
+              <div class="progress-step" data-step="3"></div>
+            </div>
+
+            <div class="form-step active" id="step-1">
+              <fieldset>
+                <legend>DADOS PESSOAIS</legend>
+
+                <div class="form-row">
+                  <div class="col">
+                    <label for="nome">Nome Completo *</label>
+                    <div class="input-wrapper">
+                      <input id="nome" name="nome" type="text" required aria-describedby="nome-error" aria-required="true">
+                      <span class="input-icon" id="nome-icon"></span>
+                    </div>
+                    <div class="error-message" id="nome-error">Por favor, preencha seu nome completo</div>
+                  </div>
+                  <div class="col">
+                    <label for="cpf">CPF *</label>
+                    <div class="input-wrapper">
+                      <input id="cpf" name="cpf" type="text" maxlength="14" required placeholder="000.000.000-00" aria-describedby="cpf-error" aria-required="true">
+                      <span class="input-icon" id="cpf-icon"></span>
+                    </div>
+                    <div class="error-message" id="cpf-error">CPF inválido</div>
+                  </div>
+                </div>
+
+                <div class="form-row" style="margin-top:10px">
+                  <div class="col">
+                    <label for="dataNascimento">Data de Nascimento *</label>
+                    <input id="dataNascimento" name="dataNascimento" type="date" required aria-describedby="dataNascimento-error" aria-required="true">
+                    <div class="error-message" id="dataNascimento-error">Data de nascimento obrigatória</div>
+                  </div>
+                  <div class="col">
+                    <label for="estadoCivil">Estado Civil *</label>
+                    <select id="estadoCivil" name="estadoCivil" required aria-describedby="estadoCivil-error" aria-required="true">
+                      <option value="">Selecione</option>
+                      <option>Solteiro(a)</option>
+                      <option>Casado(a)</option>
+                      <option>Divorciado(a)</option>
+                      <option>Viúvo(a)</option>
+                      <option>União Estável</option>
+                    </select>
+                    <div class="error-message" id="estadoCivil-error">Selecione o estado civil</div>
+                  </div>
+                </div>
+
+                <div class="form-row" style="margin-top:12px">
+                  <div class="col">
+                    <label for="cep">CEP *</label>
+                    <div class="input-wrapper">
+                      <input id="cep" name="cep" type="text" maxlength="9" placeholder="00000-000" required aria-describedby="cep-error" aria-required="true">
+                      <span class="input-icon" id="cep-icon"></span>
+                    </div>
+                    <div class="error-message" id="cep-error">CEP obrigatório</div>
+                  </div>
+                  <div class="col">
+                    <label for="rg">RG (apenas números)</label>
+                    <input id="rg" name="rg" type="text" maxlength="15">
+                  </div>
+                </div>
+
+                <div style="margin-top:12px">
+                  <label for="endereco">Endereço Residencial *</label>
+                  <input id="endereco" name="endereco" type="text" required aria-describedby="endereco-error" aria-required="true">
+                  <div class="error-message" id="endereco-error">Endereço obrigatório</div>
+                </div>
+
+                <div id="cep-unlock-hint">Dê um duplo clique nos campos de endereço ou bairro para editar.</div>
+
+                <div style="margin-top:12px">
+                  <label for="complemento">Complemento</label>
+                  <input id="complemento" name="complemento" type="text" placeholder="Apartamento, bloco, casa, etc.">
+                </div>
+
+                <div class="form-row" style="margin-top:12px">
+                  <div class="col">
+                    <label for="bairro">Bairro *</label>
+                    <input id="bairro" name="bairro" type="text" required aria-describedby="bairro-error" aria-required="true">
+                    <div class="error-message" id="bairro-error">Bairro obrigatório</div>
+                  </div>
+                  <div class="col">
+                    <label for="cidade">Cidade *</label>
+                    <input id="cidade" name="cidade" type="text" value="Salvador" required>
+                  </div>
+                  <div class="col">
+                    <label for="uf">UF *</label>
+                    <input id="uf" name="uf" type="text" value="BA" maxlength="2" required>
+                  </div>
+                </div>
+
+                <div class="form-row" style="margin-top:12px">
+                  <div class="col">
+                    <label for="email">E-mail *</label>
+                    <div class="input-wrapper">
+                      <input id="email" name="email" type="email" required placeholder="seu@email.com" aria-describedby="email-error" aria-required="true">
+                      <span class="input-icon" id="email-icon"></span>
+                    </div>
+                    <div class="error-message" id="email-error">E-mail válido obrigatório</div>
+                  </div>
+                  <div class="col">
+                    <label for="telefone">Telefone/WhatsApp *</label>
+                    <div class="input-wrapper">
+                      <input id="telefone" name="telefone" type="tel" maxlength="15" placeholder="(71) 99999-9999" required aria-describedby="telefone-error" aria-required="true">
+                      <span class="input-icon" id="telefone-icon"></span>
+                    </div>
+                    <div class="error-message" id="telefone-error">Telefone obrigatório</div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="form-navigation">
+                <div></div>
+                <button type="button" class="btn" id="next-step-1">
+                  Próximo <span style="margin-left:5px">→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-step" id="step-2">
+              <fieldset>
+                <legend>DADOS PROFISSIONAIS</legend>
+                <div class="form-row">
+                  <div class="col">
+                    <label for="cargo">Cargo *</label>
+                    <input id="cargo" name="cargo" type="text" value="Guarda Civil Municipal" required readonly>
+                  </div>
+                  <div class="col">
+                    <label for="dataAdmissao">Data de Admissão *</label>
+                    <input id="dataAdmissao" name="dataAdmissao" type="date" required aria-describedby="dataAdmissao-error" aria-required="true">
+                    <div class="error-message" id="dataAdmissao-error">Data de admissão obrigatória</div>
+                  </div>
+                </div>
+
+                <div style="margin-top:10px" class="form-row">
+                  <div class="col">
+                    <label for="matriculaGCM">Matrícula GCM *</label>
+                    <input id="matriculaGCM" name="matriculaGCM" type="text" required aria-describedby="matriculaGCM-error" aria-required="true">
+                    <div class="error-message" id="matriculaGCM-error">Matrícula GCM obrigatória</div>
+                  </div>
+                  <div class="col">
+                    <label for="matriculaGeral">Matrícula Geral</label>
+                    <input id="matriculaGeral" name="matriculaGeral" type="text">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>DEPENDENTES</legend>
+                <div style="margin-bottom:8px">
+                  <label>Possui dependente(s)?</label>
+                  <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+                    <label><input type="radio" name="possuiDependentes" value="sim"> Sim</label>
+                    <label><input type="radio" name="possuiDependentes" value="nao" checked> Não</label>
+                  </div>
+                </div>
+
+                <div id="dependentes-container" style="display:none;margin-top:8px">
+                  <p style="font-size:.95rem"><strong>Observação:</strong> Para fins de conceito de dependentes, adotar-se-á as definições da Lei 8.213/1991 - Art 16, incisos 	I, II e III e parágrafos.</p>
+                  <div id="dependentes-list"></div>
+                  <button type="button" id="adicionar-dependente" class="btn">+ Adicionar Dependente</button>
+                </div>
+              </fieldset>
+
+              <div class="form-navigation">
+                <button type="button" class="btn ghost" id="prev-step-2">
+                  <span style="margin-right:5px">←</span> Voltar
+                </button>
+                <button type="button" class="btn" id="next-step-2">
+                  Próximo <span style="margin-left:5px">→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-step" id="step-3">
+              <div class="termos-container">
+                <h4 style="color:var(--primary); margin-bottom:15px;">📜 TERMOS E CONDIÇÕES DE ASSOCIAÇÃO</h4>
+
+                <div class="termos-content">
+                  <p><strong>Prezado(a) <span class="termos-nome" id="nome-termos">[Seu Nome Completo]</span>,</strong></p>
+                  <p>A <strong>FRENTE GCM - Associação dos Guardas Civis Municipais de Salvador</strong>, fundada em 06 de junho de 2024, tem como objetivo principal a defesa e valorização profissional dos Guardas Civis Municipais.</p>
+                  <p><strong>DIREITOS DO ASSOCIADO:</strong></p>
+                  <ul>
+                    <li>Assessoria jurídica especializada em questões trabalhistas e institucionais</li>
+                    <li>Representação nas negociações coletivas e decisões que impactam a categoria</li>
+                    <li>Acesso a programas de desenvolvimento e capacitação profissional</li>
+                    <li>Participação em eventos, palestras e atividades da associação</li>
+                    <li>Recebimento de informativos e comunicados oficiais</li>
+                  </ul>
+                  <p><strong>DEVERES DO ASSOCIADO:</strong></p>
+                  <ul>
+                    <li>Manter conduta ética e profissional compatível com a categoria</li>
+                    <li>Contribuir com a associação conforme estatuto social</li>
+                    <li>Participar das assembleias e atividades quando convocado</li>
+                    <li>Comunicar mudanças de dados cadastrais</li>
+                    <li>Respeitar as decisões coletivas da associação</li>
+                  </ul>
+                  <p><strong>CONDIÇÕES GERAIS:</strong></p>
+                  <ul>
+                    <li>A associação é regida pelo Estatuto Social aprovado em assembleia</li>
+                    <li>O mandato da atual diretoria é de 06/06/2024 a 01/01/2030</li>
+                    <li>O valor da contribuição associativa será definido no Estatuto Social</li>
+                    <li>O desligamento da associação deverá ser solicitado por escrito</li>
+                    <li>Os dados fornecidos serão utilizados exclusivamente para fins associativos</li>
+                  </ul>
+                  <p style="margin-top:20px; font-style: italic;">
+                    Declaro que li e compreendi os termos e condições acima e associo-me à FRENTE GCM de livre e espontânea vontade.
+                  </p>
+                </div>
+                
+                <label class="termos-checkbox" for="termosAceite">
+                  <input id="termosAceite" name="termosAceite" type="checkbox" required aria-describedby="termosAceite-error" aria-required="true">
+                  <div class="custom-checkbox"><span class="checkmark">✓</span></div>
+                  <span class="termos-text">
+                    Eu, <span class="termos-nome" id="nome-declarante">[Seu Nome Completo]</span>, li e aceito integralmente os Termos de Associação.
+                  </span>
+                </label>
+                <div class="error-message" id="termosAceite-error" style="margin-top:10px">Você deve aceitar os termos para continuar</div>
+              </div>
+
+              <div style="text-align:center;margin-top:30px">
+                <button type="button" class="btn" id="preview-btn" style="padding:14px 40px;font-size:1.1rem;background:var(--secondary)">
+                  👁️ Revisar Dados
+                </button>
+              </div>
+
+              <div class="form-navigation">
+                <button type="button" class="btn ghost" id="prev-step-3">
+                  <span style="margin-right:5px">←</span> Voltar
+                </button>
+                <div></div>
+              </div>
+            </div>
+          </form>
+
+          <div id="resultado">
+            <div class="success-animation">🏆</div>
+            <h3 style="color:var(--primary); font-family: 'Montserrat', sans-serif;">SUA VOZ AGORA FAZ PARTE DA NOSSA LUTA!</h3>
+            
+            <div class="welcome-badge">
+              <h4>SEJA BEM-VINDO(A) À LINHA DE FRENTE!</h4>
+              <p>Sua filiação fortalece toda a categoria. Juntos, construiremos um futuro de mais respeito e valorização para a Guarda Civil Municipal de Salvador.</p>
+            </div>
+
+            <blockquote style="margin: 30px auto; max-width: 600px; font-style: italic; opacity: 0.9; border-left: 3px solid var(--accent); padding-left: 15px;">
+              <p>"Eu sou parte de uma equipe. Então, quando venço, não sou eu apenas quem vence. De certa forma, termino o trabalho de um grupo enorme de pessoas."</p>
+              <footer style="text-align: right; font-weight: bold; margin-top: 10px; font-size: 0.9em;">- Ayrton Senna</footer>
+            </blockquote>
+            
+            <p style="font-size: 0.9rem; opacity: 0.8;">Fique atento aos nossos canais de comunicação para novidades.</p>
+
+            <div style="margin-top:20px">
+              <button id="baixar-comprovante" class="btn">📄 Baixar Comprovante</button>
+              <button id="voltar-inicio" class="btn ghost">🏠 Voltar ao Início</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+  <div class="container">
+    <h2 class="section-title">SOBRE A FRENTE GCM</h2>
+
+    <div style="max-width:900px;margin:0 auto;background:var(--light);padding:16px;border-radius:10px;text-align:center; box-shadow: 0 8px 26px var(--shadow-color);">
+      <p>
+        A <strong>FRENTE GCM</strong> - Associação dos Guardas Civis Municipais de Salvador - é uma entidade representativa e assistencial criada com o propósito de fortalecer, valorizar e defender os direitos e interesses da categoria dos Guardas Civis Municipais da capital baiana. Fundada em <strong>06 de junho de 2024</strong>, a FRENTE GCM nasceu do compromisso coletivo de promover a união, o respeito e o reconhecimento do papel essencial que os agentes da GCMS exercem na segurança pública e na proteção dos cidadãos soteropolitanos.
+      </p>
+
+      <p>
+        Mais do que uma associação, a FRENTE GCM é um movimento de valorização e compromisso com a categoria, que entende que a defesa dos direitos dos agentes é também a defesa de um serviço público mais eficiente, humano e próximo da população.
+      </p>
+
+      <p><strong>Unidos, seguimos firmes na missão de proteger, evoluir e representar os interesses da categoria, com coragem e responsabilidade!</strong></p>
+
+      </div>
+  </div>
+</section>
+
+    <section id="contato">
+      <div class="container">
+        <h2 class="section-title">FALE CONOSCO</h2>
+        <div style="max-width:560px;margin:0 auto;text-align:center;background:var(--light);padding:16px;border-radius:10px">
+          <p>📧 frentegcm@gmail.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ <footer>
+  <div class="container footer-content">
+
+    <p class="footer-slogan">
+      JUNTOS SOMOS MAIS FORTES!
+    </p>
+
+    <p class="footer-info">
+      &copy;2026 FRENTE GCM – Fundada em 06 de junho de 2024
+    </p>
+
+    <p class="footer-social">
+      <a 
+        href="https://www.instagram.com/frentegcm" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="instagram-link"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M7.75 2h8.5C19.99 2 22 4.01 22 6.25v11.5C22 19.99 19.99 22 16.25 22h-8.5C4.01 22 2 19.99 2 17.75V6.25C2 4.01 4.01 2 7.75 2Zm0 1.5C4.84 3.5 3.5 4.84 3.5 7.75v8.5c0 2.91 1.34 4.25 4.25 4.25h8.5c2.91 0 4.25-1.34 4.25-4.25v-8.5c0-2.91-1.34-4.25-4.25-4.25h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.26 1.13 1.13 0 0 1 0-2.26Z"/>
+        </svg>
+        <span>@frentegcm</span>
+      </a>
+
+      <span class="footer-cnpj">— CNPJ: 64.739.739/0001-00</span>
+    </p>
+
+  </div>
+</footer>
+
+  
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="modal-overlay" id="preview-modal">
+    <div class="modal">
+      <h3>📋 Revisão dos Dados</h3>
+      <div id="preview-content"></div>
+      <div class="modal-buttons">
+        <button type="button" class="btn ghost" id="cancel-preview">Editar</button>
+        <button type="button" class="btn" id="confirm-submit">✅ Confirmar e Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========== UTILITY FUNCTIONS ==========
+    const Utils = {
+      sanitize(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      },
+      
+      debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      },
+
+      formatDate(dateStr) {
+        if (!dateStr || dateStr.split('-').length < 3) return 'N/A';
+        const [year, month, day] = dateStr.split('-');
+        return `${day}/${month}/${year}`;
+      }
+    };
+
+    // ========== FORM MASKS ==========
+    const FormMasks = {
+      cpf: value => value.replace(/\D/g,'').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'),
+      cep: value => value.replace(/\D/g,'').replace(/^(\d{5})(\d)/,'$1-$2'),
+      telefone: value => value.replace(/\D/g,'').replace(/^(\d{2})(\d)/g,'($1) $2').replace(/(\d{5})(\d)/,'$1-$2'),
+      rg: value => value.replace(/\D/g,'')
+    };
+
+    // ========== FORM VALIDATORS ==========
+    const FormValidators = {
+      validateCPF(cpf) {
+        const v = cpf.replace(/\D/g,'');
+        if(!v || v.length !== 11 || /^(\d)\1+$/.test(v)) return false;
+        
+        let s = 0;
+        for(let i=0;i<9;i++) s += parseInt(v[i]) * (10 - i);
+        let r = (s * 10) % 11;
+        if(r === 10) r = 0;
+        if(r !== parseInt(v[9])) return false;
+        
+        s = 0;
+        for(let i=0;i<10;i++) s += parseInt(v[i]) * (11 - i);
+        r = (s * 10) % 11;
+        if(r === 10) r = 0;
+        return r === parseInt(v[10]);
+      },
+
+      validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      },
+
+      validateDate(dateStr, minAge = 18, maxAge = 100) {
+        if (!dateStr) return false;
+        const date = new Date(dateStr);
+        const today = new Date();
+        const age = Math.floor((today - date) / (365.25 * 24 * 60 * 60 * 1000));
+        return age >= minAge && age <= maxAge;
+      },
+
+      validateAdmissionDate(dateStr) {
+        if (!dateStr) return false;
+        const date = new Date(dateStr);
+        const today = new Date();
+        return date <= today;
+      },
+
+      validateTelefone(tel) {
+        const cleaned = tel.replace(/\D/g,'');
+        return cleaned.length === 10 || cleaned.length === 11;
+      },
+
+      validateCEP(cep) {
+        const cleaned = cep.replace(/\D/g,'');
+        return cleaned.length === 8;
+      }
+    };
+
+    // ========== UI MANAGER ==========
+    const UIManager = {
+      showToast(msg, type = 'success') {
+        const container = document.querySelector('.toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = msg;
+        container.appendChild(toast);
+        setTimeout(() => toast.classList.add('show'), 50);
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => toast.remove(), 400);
+        }, 3500);
+      },
+
+      showError(input, message) {
+        input.classList.add('error');
+        input.classList.remove('valid');
+        const errorElement = document.getElementById(input.getAttribute('aria-describedby'));
+        const icon = document.getElementById(input.id + '-icon');
+        
+        if(errorElement){
+          errorElement.textContent = message;
+          errorElement.classList.add('show');
+        }
+        
+        if(icon) {
+          icon.textContent = '❌';
+          icon.className = 'input-icon error show';
+        }
+      },
+
+      clearError(input) {
+        input.classList.remove('error');
+        const errorElement = document.getElementById(input.getAttribute('aria-describedby'));
+        const icon = document.getElementById(input.id + '-icon');
+        
+        if(errorElement) errorElement.classList.remove('show');
+        if(icon) {
+          icon.className = 'input-icon';
+        }
+      },
+
+      showValid(input) {
+        input.classList.add('valid');
+        input.classList.remove('error');
+        const icon = document.getElementById(input.id + '-icon');
+        
+        if(icon) {
+          icon.textContent = '✓';
+          icon.className = 'input-icon success show';
+        }
+      }
+    };
+
+    // ========== STORAGE MANAGER ==========
+    const StorageManager = {
+      saveDraft(formData) {
+        try {
+          localStorage.setItem('formDraft', JSON.stringify(formData));
+          localStorage.setItem('draftTimestamp', Date.now());
+        } catch(e) {
+          console.error('Erro ao salvar rascunho:', e);
+        }
+      },
+
+      loadDraft() {
+        try {
+          const draft = localStorage.getItem('formDraft');
+          const timestamp = localStorage.getItem('draftTimestamp');
+          
+          if (draft && timestamp) {
+            const age = Date.now() - parseInt(timestamp);
+            const maxAge = 7 * 24 * 60 * 60 * 1000; // 7 dias
+            
+            if (age < maxAge) {
+              return JSON.parse(draft);
+            } else {
+              this.clearDraft();
+            }
+          }
+        } catch(e) {
+          console.error('Erro ao carregar rascunho:', e);
+        }
+        return null;
+      },
+
+      clearDraft() {
+        localStorage.removeItem('formDraft');
+        localStorage.removeItem('draftTimestamp');
+      }
+    };
+
+    // ========== MAIN APP ==========
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = {
+        navLinks: document.querySelectorAll('.nav-link'),
+        heroCta: document.getElementById('hero-cta'),
+        form: document.getElementById('form-associacao'),
+        cpfInput: document.getElementById('cpf'),
+        cepInput: document.getElementById('cep'),
+        telefoneInput: document.getElementById('telefone'),
+        rgInput: document.getElementById('rg'),
+        nomeInput: document.getElementById('nome'),
+        emailInput: document.getElementById('email'),
+        dataNascimentoInput: document.getElementById('dataNascimento'),
+        dataAdmissaoInput: document.getElementById('dataAdmissao'),
+        nomeDecl: document.getElementById('nome-declarante'),
+        nomeTermos: document.getElementById('nome-termos'),
+        enderecoInput: document.getElementById('endereco'),
+        bairroInput: document.getElementById('bairro'),
+        cepUnlockHint: document.getElementById('cep-unlock-hint'),
+        dependentesContainer: document.getElementById('dependentes-container'),
+        addDependenteBtn: document.getElementById('adicionar-dependente'),
+        dependentesList: document.getElementById('dependentes-list'),
+        resultadoBox: document.getElementById('resultado'),
+        baixarComprovanteBtn: document.getElementById('baixar-comprovante'),
+        voltarInicioBtn: document.getElementById('voltar-inicio'),
+        themeToggle: document.getElementById('theme-toggle'),
+        formSteps: document.querySelectorAll('.form-step'),
+        progressSteps: document.querySelectorAll('.progress-step'),
+        dependentesRadios: document.querySelectorAll('input[name="possuiDependentes"]'),
+        animateOnScrollElements: document.querySelectorAll('.animate-on-scroll'),
+        previewBtn: document.getElementById('preview-btn'),
+        previewModal: document.getElementById('preview-modal'),
+        previewContent: document.getElementById('preview-content'),
+        cancelPreview: document.getElementById('cancel-preview'),
+        confirmSubmit: document.getElementById('confirm-submit'),
+        draftNotice: document.getElementById('draft-notice'),
+        nextStep1: document.getElementById('next-step-1'),
+        nextStep2: document.getElementById('next-step-2'),
+        prevStep2: document.getElementById('prev-step-2'),
+        prevStep3: document.getElementById('prev-step-3'),
+        hiddenIframe: document.getElementById('hidden_iframe'),
+        loadingOverlay: document.getElementById('loading-overlay')
+      };
+
+      let dadosEnviados = {};
+      let currentStep = 1;
+      let formWasSubmitted = false;
+
+      // ========== NAVIGATION ==========
+      const showSection = (id, shouldScroll = false) => {
+        document.querySelectorAll('main section').forEach(s => s.classList.toggle('visible', s.id === id));
+        elements.navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === id));
+        
+        if (shouldScroll) {
+          const el = document.getElementById(id);
+          setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+        } else {
+          window.scrollTo({top:0, behavior:'smooth'});
+        }
+      };
+
+      elements.navLinks.forEach(a => a.addEventListener('click', e => {
+        e.preventDefault();
+        showSection(a.dataset.target, a.dataset.target === 'associacao');
+      }));
+
+      elements.heroCta.addEventListener('click', () => showSection('associacao', true));
+
+      // ========== INPUT MASKS ==========
+      elements.cpfInput.addEventListener('input', e => e.target.value = FormMasks.cpf(e.target.value));
+      elements.cepInput.addEventListener('input', e => e.target.value = FormMasks.cep(e.target.value));
+      elements.telefoneInput.addEventListener('input', e => e.target.value = FormMasks.telefone(e.target.value));
+      elements.rgInput.addEventListener('input', e => e.target.value = FormMasks.rg(e.target.value));
+
+      // ========== REAL-TIME VALIDATION ==========
+      const setupRealtimeValidation = () => {
+        elements.cpfInput.addEventListener('blur', () => {
+          const value = elements.cpfInput.value;
+          if(value) {
+            if(FormValidators.validateCPF(value)) {
+              UIManager.showValid(elements.cpfInput);
+            } else {
+              UIManager.showError(elements.cpfInput, 'CPF inválido');
+            }
+          }
+        });
+
+        elements.emailInput.addEventListener('blur', () => {
+          const value = elements.emailInput.value;
+          if(value) {
+            if(FormValidators.validateEmail(value)) {
+              UIManager.showValid(elements.emailInput);
+            } else {
+              UIManager.showError(elements.emailInput, 'E-mail inválido');
+            }
+          }
+        });
+
+        elements.telefoneInput.addEventListener('blur', () => {
+          const value = elements.telefoneInput.value;
+          if(value) {
+            if(FormValidators.validateTelefone(value)) {
+              UIManager.showValid(elements.telefoneInput);
+            } else {
+              UIManager.showError(elements.telefoneInput, 'Telefone inválido (deve ter 10 ou 11 dígitos)');
+            }
+          }
+        });
+
+        elements.dataNascimentoInput.addEventListener('change', () => {
+          const value = elements.dataNascimentoInput.value;
+          if(value) {
+            if(FormValidators.validateDate(value)) {
+              UIManager.showValid(elements.dataNascimentoInput);
+            } else {
+              UIManager.showError(elements.dataNascimentoInput, 'Idade deve estar entre 18 e 100 anos');
+            }
+          }
+        });
+
+        elements.dataAdmissaoInput.addEventListener('change', () => {
+          const value = elements.dataAdmissaoInput.value;
+          if(value) {
+            if(FormValidators.validateAdmissionDate(value)) {
+              UIManager.showValid(elements.dataAdmissaoInput);
+            } else {
+              UIManager.showError(elements.dataAdmissaoInput, 'Data de admissão não pode ser futura');
+            }
+          }
+        });
+
+        elements.nomeInput.addEventListener('input', Utils.debounce(() => {
+          const nome = elements.nomeInput.value.trim() || '[Seu Nome Completo]';
+          elements.nomeDecl.textContent = nome;
+          elements.nomeTermos.textContent = nome;
+          
+          if(elements.nomeInput.value.trim().length >= 3) {
+            UIManager.showValid(elements.nomeInput);
+          }
+        }, 300));
+
+        elements.form.querySelectorAll('[required]').forEach(field => {
+          field.addEventListener('input', () => UIManager.clearError(field));
+        });
+      };
+
+      // ========== CEP LOOKUP ==========
+      const fetchWithTimeout = async (url, options = {}, timeout = 5000) => {
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), timeout);
+        
+        try {
+          const response = await fetch(url, {
+            ...options,
+            signal: controller.signal
+          });
+          clearTimeout(id);
+          return response;
+        } catch (error) {
+          clearTimeout(id);
+          throw error;
+        }
+      };
+
+      elements.cepInput.addEventListener('blur', async () => {
+        const cep = elements.cepInput.value.replace(/\D/g,'');
+        
+        if(!FormValidators.validateCEP(elements.cepInput.value)) {
+          if(cep.length > 0) {
+            UIManager.showError(elements.cepInput, 'CEP deve ter 8 dígitos');
+          }
+          return;
+        }
+
+        UIManager.showToast('Buscando endereço...', 'info');
+        UIManager.showValid(elements.cepInput);
+        
+        try {
+          const res = await fetchWithTimeout(`https://viacep.com.br/ws/${cep}/json/`);
+          const data = await res.json();
+          
+          if(!data.erro){
+            elements.enderecoInput.value = data.logradouro || '';
+            elements.bairroInput.value = data.bairro || '';
+            document.getElementById('cidade').value = data.localidade || '';
+            document.getElementById('uf').value = data.uf || '';
+            
+            [elements.enderecoInput, elements.bairroInput].forEach(el => el.readOnly = true);
+            elements.cepUnlockHint.style.display = 'block';
+            
+            UIManager.showToast('Endereço preenchido automaticamente!', 'success');
+          } else {
+            UIManager.showError(elements.cepInput, 'CEP não encontrado');
+          }
+        } catch(e) {
+          UIManager.showToast('Erro ao buscar CEP. Verifique sua conexão.', 'error');
+          UIManager.showError(elements.cepInput, 'Erro ao buscar CEP');
+        }
+      });
+
+      [elements.enderecoInput, elements.bairroInput].forEach(el => {
+        el.addEventListener('dblclick', () => {
+          el.readOnly = false;
+          elements.cepUnlockHint.style.display = 'none';
+          UIManager.showToast(`Campo "${el.labels[0].textContent}" desbloqueado para edição.`, 'info');
+        });
+      });
+
+      // ========== DEPENDENTES ==========
+      elements.dependentesRadios.forEach(radio => {
+        radio.addEventListener('change', e => {
+          const show = e.target.value === 'sim';
+          elements.dependentesContainer.style.display = show ? 'block' : 'none';
+          if(show && elements.dependentesList.children.length === 0) addDependente();
+          if(!show) elements.dependentesList.innerHTML = '';
+        });
+      });
+
+      const addDependente = () => {
+        const index = elements.dependentesList.children.length + 1;
+        const div = document.createElement('div');
+        div.className = 'dependente-item';
+        div.innerHTML = `
+          <h5>Dependente ${index}</h5>
+          <input name="dependenteNome[]" placeholder="Nome completo *" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border-color); margin-top: 8px;" required>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <input type="date" name="dependenteDataNascimento[]" style="flex:1;padding:8px;border-radius:6px;border:1px solid var(--border-color)" required title="Data de Nascimento">
+            <select name="dependenteParentesco[]" style="flex:1;padding:8px;border-radius:6px;border:1px solid var(--border-color)" required>
+              <option value="">Parentesco *</option>
+              <option>Cônjuge/Companheiro(a)</option>
+              <option>Filho(a)</option>
+              <option>Enteado(a)</option>
+              <option>Outros</option>
+            </select>
+          </div>
+          <div style="text-align:right; margin-top:8px">
+            <button type="button" class="btn" style="background:var(--danger); padding:6px 12px; font-size:0.9rem" onclick="this.closest('.dependente-item').remove()">Remover</button>
+          </div>
+        `;
+        elements.dependentesList.appendChild(div);
+      };
+
+      elements.addDependenteBtn.addEventListener('click', addDependente);
+
+      // ========== FORM STEPS ==========
+      const updateProgress = (step) => {
+        elements.progressSteps.forEach((el, index) => {
+          el.classList.toggle('active', index < step);
+          el.classList.toggle('completed', index < step - 1);
+        });
+        document.querySelector(`.progress-step[data-step="${step}"]`)?.classList.add('active');
+      };
+
+      const changeStep = (step) => {
+        currentStep = step;
+        elements.formSteps.forEach(s => s.classList.remove('active'));
+        document.getElementById(`step-${step}`).classList.add('active');
+        updateProgress(step);
+        window.scrollTo({top:0, behavior:'smooth'});
+      };
+
+      const validateStep = (step) => {
+        const stepElement = document.getElementById(`step-${step}`);
+        const requiredFields = stepElement.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredFields.forEach(field => {
+          const value = field.type === 'checkbox' ? field.checked : field.value.trim();
+          
+          if(!value) {
+            UIManager.showError(field, 'Campo obrigatório');
+            isValid = false;
+            return;
+          }
+
+          // Validações específicas
+          if(field.id === 'cpf' && !FormValidators.validateCPF(field.value)) {
+            UIManager.showError(field, 'CPF inválido');
+            isValid = false;
+          }
+          else if(field.id === 'email' && !FormValidators.validateEmail(field.value)) {
+            UIManager.showError(field, 'E-mail inválido');
+            isValid = false;
+          }
+          else if(field.id === 'telefone' && !FormValidators.validateTelefone(field.value)) {
+            UIManager.showError(field, 'Telefone inválido');
+            isValid = false;
+          }
+          else if(field.id === 'dataNascimento' && !FormValidators.validateDate(field.value)) {
+            UIManager.showError(field, 'Idade deve estar entre 18 e 100 anos');
+            isValid = false;
+          }
+          else if(field.id === 'dataAdmissao' && !FormValidators.validateAdmissionDate(field.value)) {
+            UIManager.showError(field, 'Data de admissão não pode ser futura');
+            isValid = false;
+          }
+          else if(field.id === 'cep' && !FormValidators.validateCEP(field.value)) {
+            UIManager.showError(field, 'CEP inválido');
+            isValid = false;
+          }
+        });
+
+        if(!isValid) {
+          UIManager.showToast('Por favor, corrija os erros antes de continuar.', 'error');
+          const firstError = stepElement.querySelector('.error');
+          if(firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstError.focus();
+          }
+        }
+
+        return isValid;
+      };
+
+      // Navigation buttons
+      elements.nextStep1.addEventListener('click', () => {
+        if(validateStep(1)) {
+          changeStep(2);
+          saveFormDraft();
+        }
+      });
+
+      elements.nextStep2.addEventListener('click', () => {
+        if(validateStep(2)) {
+          changeStep(3);
+          saveFormDraft();
+        }
+      });
+
+      elements.prevStep2.addEventListener('click', () => changeStep(1));
+      elements.prevStep3.addEventListener('click', () => changeStep(2));
+
+      // ========== AUTO-SAVE DRAFT ==========
+      const saveFormDraft = Utils.debounce(() => {
+        const formData = new FormData(elements.form);
+        const data = {};
+        for(const [k,v] of formData.entries()){
+          if(k.endsWith('[]')){
+            const base = k.slice(0,-2);
+            data[base] = data[base] || [];
+            data[base].push(v);
+          } else {
+            data[k] = v;
+          }
+        }
+        StorageManager.saveDraft(data);
+      }, 1000);
+
+      elements.form.addEventListener('input', saveFormDraft);
+
+      // Load draft on page load
+      const loadDraft = () => {
+        const draft = StorageManager.loadDraft();
+        if(draft) {
+          elements.draftNotice.classList.add('show');
+          setTimeout(() => elements.draftNotice.classList.remove('show'), 5000);
+
+          Object.keys(draft).forEach(key => {
+            const field = elements.form.elements[key];
+            if(field && !key.includes('dependente')) {
+              if(field.type === 'radio') {
+                const radio = elements.form.querySelector(`input[name="${key}"][value="${draft[key]}"]`);
+                if(radio) radio.checked = true;
+              } else if(field.type === 'checkbox') {
+                field.checked = draft[key];
+              } else {
+                field.value = draft[key];
+              }
+            }
+          });
+
+          if(draft.possuiDependentes === 'sim' && draft.dependenteNome) {
+            document.querySelector('input[name="possuiDependentes"][value="sim"]').checked = true;
+            elements.dependentesContainer.style.display = 'block';
+            
+            draft.dependenteNome.forEach((nome, i) => {
+              addDependente();
+              const items = elements.dependentesList.querySelectorAll('.dependente-item');
+              const item = items[i];
+              if(item) {
+                item.querySelector('input[name="dependenteNome[]"]').value = nome;
+                item.querySelector('input[name="dependenteDataNascimento[]"]').value = draft.dependenteDataNascimento[i] || '';
+                item.querySelector('select[name="dependenteParentesco[]"]').value = draft.dependenteParentesco[i] || '';
+              }
+            });
+          }
+
+          UIManager.showToast('Rascunho recuperado com sucesso!', 'success');
+        }
+      };
+
+      loadDraft();
+
+      // ========== PREVIEW MODAL ==========
+      elements.previewBtn.addEventListener('click', () => {
+        if(!document.getElementById('termosAceite').checked) {
+          UIManager.showToast('Você deve aceitar os termos para continuar.', 'error');
+          UIManager.showError(document.getElementById('termosAceite'), 'Aceite obrigatório');
+          return;
+        }
+
+        const formData = new FormData(elements.form);
+        const data = {};
+        for(const [k,v] of formData.entries()){
+          if(k.endsWith('[]')){
+            const base = k.slice(0,-2);
+            data[base] = data[base] || [];
+            data[base].push(v);
+          } else {
+            data[k] = v;
+          }
+        }
+
+        let html = '<div style="max-height:400px;overflow-y:auto">';
+        html += '<h4 style="color:var(--primary)">Dados Pessoais</h4>';
+        html += `<p><strong>Nome:</strong> ${data.nome || 'N/A'}</p>`;
+        html += `<p><strong>CPF:</strong> ${data.cpf || 'N/A'}</p>`;
+        html += `<p><strong>Data de Nascimento:</strong> ${Utils.formatDate(data.dataNascimento)}</p>`;
+        html += `<p><strong>Estado Civil:</strong> ${data.estadoCivil || 'N/A'}</p>`;
+        html += `<p><strong>E-mail:</strong> ${data.email || 'N/A'}</p>`;
+        html += `<p><strong>Telefone:</strong> ${data.telefone || 'N/A'}</p>`;
+        
+        html += '<h4 style="color:var(--primary);margin-top:20px">Endereço</h4>';
+        html += `<p><strong>CEP:</strong> ${data.cep || 'N/A'}</p>`;
+        html += `<p><strong>Endereço:</strong> ${data.endereco || 'N/A'}</p>`;
+        html += `<p><strong>Bairro:</strong> ${data.bairro || 'N/A'}</p>`;
+        html += `<p><strong>Cidade/UF:</strong> ${data.cidade || 'N/A'} - ${data.uf || 'N/A'}</p>`;
+        
+        html += '<h4 style="color:var(--primary);margin-top:20px">Dados Profissionais</h4>';
+        html += `<p><strong>Cargo:</strong> ${data.cargo || 'N/A'}</p>`;
+        html += `<p><strong>Matrícula GCM:</strong> ${data.matriculaGCM || 'N/A'}</p>`;
+        html += `<p><strong>Data de Admissão:</strong> ${Utils.formatDate(data.dataAdmissao)}</p>`;
+        
+        if(data.possuiDependentes === 'sim' && data.dependenteNome && data.dependenteNome.length > 0) {
+          html += '<h4 style="color:var(--primary);margin-top:20px">Dependentes</h4>';
+          data.dependenteNome.forEach((nome, i) => {
+            html += `<p><strong>• ${nome}</strong> - ${data.dependenteParentesco[i]} - Nasc: ${Utils.formatDate(data.dependenteDataNascimento[i])}</p>`;
+          });
+        }
+        
+        html += '</div>';
+        elements.previewContent.innerHTML = html;
+        elements.previewModal.classList.add('show');
+      });
+
+      elements.cancelPreview.addEventListener('click', () => {
+        elements.previewModal.classList.remove('show');
+      });
+
+      elements.previewModal.addEventListener('click', (e) => {
+        if(e.target === elements.previewModal) {
+          elements.previewModal.classList.remove('show');
+        }
+      });
+      
+      // ========== FORM SUBMISSION LOGIC ==========
+
+      const captureFormDataForPDF = () => {
+        const fd = new FormData(elements.form);
+        const obj = {};
+        for(const [k,v] of fd.entries()){
+          if(k.endsWith('[]')){
+            const base = k.slice(0,-2);
+            obj[base] = obj[base] || [];
+            obj[base].push(v);
+          } else {
+            obj[k] = v;
+          }
+        }
+        dadosEnviados = obj;
+      };
+
+      elements.confirmSubmit.addEventListener('click', () => {
+        elements.previewModal.classList.remove('show');
+        elements.loadingOverlay.style.display = 'flex';
+        captureFormDataForPDF();
+        
+        const dataEnvioInput = document.createElement('input');
+        dataEnvioInput.type = 'hidden';
+        dataEnvioInput.name = 'dataEnvio';
+        dataEnvioInput.value = new Date().toISOString();
+        document.getElementById('dataEnvio-wrapper').innerHTML = ''; 
+        document.getElementById('dataEnvio-wrapper').appendChild(dataEnvioInput);
+        
+        formWasSubmitted = true;
+        
+        setTimeout(() => {
+          elements.form.submit();
+        }, 100);
+      });
+
+      elements.hiddenIframe.addEventListener('load', () => {
+        if (formWasSubmitted) {
+          setTimeout(() => {
+            elements.loadingOverlay.style.display = 'none';
+            // ALTERAÇÃO 2 (BUG FIX): Esconde apenas o formulário, e não o contêiner inteiro.
+            elements.form.style.display = 'none'; 
+            elements.resultadoBox.style.display = 'block';
+            StorageManager.clearDraft();
+            UIManager.showToast('Associação realizada com sucesso!', 'success');
+            formWasSubmitted = false;
+          }, 1500);
+        }
+      });
+      
+      // ========== PDF GENERATION ==========
+      elements.baixarComprovanteBtn.addEventListener('click', () => {
+        if(typeof window.jspdf === 'undefined') {
+          UIManager.showToast('Carregando gerador de PDF...', 'info');
+          setTimeout(() => {
+            if(typeof window.jspdf === 'undefined') {
+              UIManager.showToast('Erro ao carregar PDF. Recarregue a página.', 'error');
+            } else {
+              generatePDF();
+            }
+          }, 2000);
+          return;
+        }
+        generatePDF();
+      });
+
+      const generatePDF = () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const pageW = doc.internal.pageSize.getWidth();
+        const margin = 15;
+        let yPos = 0;
+
+        // Header
+        doc.setFillColor(26, 58, 95);
+        doc.rect(0, 0, pageW, 35, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.text('ASSOCIAÇÃO DOS GUARDAS CIVIS MUNICIPAIS DE SALVADOR', pageW / 2, 15, { align: 'center' });
+        doc.setFontSize(11);
+        doc.setTextColor(255, 215, 0);
+        doc.text('FRENTE GCM - FICHA DE ASSOCIAÇÃO', pageW / 2, 25, { align: 'center' });
+
+        // Protocol
+        yPos = 45;
+        const protocolo = 'FRGCM-' + (new Date()).toISOString().replace(/[:.]/g,'').slice(0,15);
+        const dataAssociacao = new Date().toLocaleString('pt-BR');
+        doc.setTextColor(100);
+        doc.setFontSize(9);
+        doc.text(`Protocolo: ${protocolo}`, pageW - margin, yPos, { align: 'right' });
+        doc.text(`Data de Emissão: ${dataAssociacao}`, pageW - margin, yPos + 5, { align: 'right' });
+
+        const drawSection = (title) => {
+          yPos += 12;
+          doc.setTextColor(26, 58, 95);
+          doc.setFontSize(12);
+          doc.setFont('helvetica', 'bold');
+          doc.text(title, margin, yPos);
+          doc.setDrawColor(200);
+          doc.line(margin, yPos + 2, pageW - margin, yPos + 2);
+          yPos += 8;
+        };
+
+        // Dados Pessoais
+        drawSection('DADOS PESSOAIS');
+        doc.setTextColor(0);
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        doc.text(`Nome Completo: ${dadosEnviados.nome || 'N/A'}`, margin, yPos);
+        yPos += 7;
+        doc.text(`CPF: ${dadosEnviados.cpf || 'N/A'}`, margin, yPos);
+        doc.text(`RG: ${dadosEnviados.rg || 'N/A'}`, pageW / 2, yPos);
+        yPos += 7;
+        doc.text(`Data de Nascimento: ${Utils.formatDate(dadosEnviados.dataNascimento)}`, margin, yPos);
+        doc.text(`Estado Civil: ${dadosEnviados.estadoCivil || 'N/A'}`, pageW / 2, yPos);
+        yPos += 7;
+        doc.text(`E-mail: ${dadosEnviados.email || 'N/A'}`, margin, yPos);
+        doc.text(`Telefone: ${dadosEnviados.telefone || 'N/A'}`, pageW / 2, yPos);
+
+        // Endereço
+        drawSection('ENDEREÇO');
+        doc.text(`Logradouro: ${dadosEnviados.endereco || 'N/A'}`, margin, yPos);
+        yPos += 7;
+        doc.text(`Complemento: ${dadosEnviados.complemento || 'N/A'}`, margin, yPos);
+        doc.text(`Bairro: ${dadosEnviados.bairro || 'N/A'}`, pageW / 2, yPos);
+        yPos += 7;
+        doc.text(`CEP: ${dadosEnviados.cep || 'N/A'}`, margin, yPos);
+        doc.text(`Cidade/UF: ${dadosEnviados.cidade || 'N/A'} - ${dadosEnviados.uf || 'N/A'}`, pageW / 2, yPos);
+
+        // Dados Profissionais
+        drawSection('DADOS PROFISSIONAIS');
+        doc.text(`Cargo: ${dadosEnviados.cargo || 'N/A'}`, margin, yPos);
+        yPos += 7;
+        doc.text(`Matrícula GCM: ${dadosEnviados.matriculaGCM || 'N/A'}`, margin, yPos);
+        doc.text(`Matrícula Geral: ${dadosEnviados.matriculaGeral || 'N/A'}`, pageW / 2, yPos);
+        yPos += 7;
+        doc.text(`Data de Admissão: ${Utils.formatDate(dadosEnviados.dataAdmissao)}`, margin, yPos);
+
+        // Dependentes
+        if (dadosEnviados.possuiDependentes === 'sim' && Array.isArray(dadosEnviados.dependenteNome) && dadosEnviados.dependenteNome.length > 0) {
+          drawSection('DEPENDENTES DECLARADOS');
+          dadosEnviados.dependenteNome.forEach((nome, i) => {
+            const depNasc = Utils.formatDate(dadosEnviados.dependenteDataNascimento[i]);
+            const depParentesco = dadosEnviados.dependenteParentesco[i] || 'N/A';
+            doc.text(`• ${nome} | ${depParentesco} | Nasc.: ${depNasc}`, margin + 2, yPos);
+            yPos += 7;
+            if (yPos > 260) { doc.addPage(); yPos = 20; }
+          });
+        }
+
+        // Declaração
+        if (yPos > 210) { doc.addPage(); yPos = 20; }
+        yPos = 230;
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'italic');
+        const declarationText = `Eu, ${dadosEnviados.nome || ''}, declaro que as informações acima são verdadeiras e autorizo minha associação à FRENTE GCM.`;
+        const wrapped = doc.splitTextToSize(declarationText, pageW - (margin * 2));
+        doc.text(wrapped, margin, yPos);
+        
+        yPos += 30;
+        doc.line(margin, yPos, margin + 80, yPos);
+        doc.text('Assinatura do Associado(a)', margin + 40, yPos + 5, { align: 'center' });
+        doc.line(pageW - margin - 80, yPos, pageW - margin, yPos);
+        doc.text('FRENTE GCM', pageW - margin - 40, yPos + 5, { align: 'center' });
+
+        // Footer
+        doc.setDrawColor(200);
+        doc.line(margin, 280, pageW - margin, 280);
+        doc.setFontSize(8);
+        doc.setTextColor(150);
+        doc.text('Documento gerado eletronicamente pelo sistema de associação online.', pageW / 2, 285, { align: 'center' });
+
+        doc.save(`Ficha-Associacao-${dadosEnviados.cpf}.pdf`);
+        UIManager.showToast('PDF gerado com sucesso!', 'success');
+      };
+
+      elements.voltarInicioBtn.addEventListener('click', () => {
+        window.location.reload();
+      });
+
+      // ========== THEME SWITCHER ==========
+      const applyTheme = (theme) => {
+        document.body.setAttribute('data-theme', theme);
+        elements.themeToggle.checked = theme === 'dark';
+        localStorage.setItem('theme', theme);
+      };
+
+      const preferredTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      applyTheme(preferredTheme);
+      
+      elements.themeToggle.addEventListener('change', () => {
+        applyTheme(elements.themeToggle.checked ? 'dark' : 'light');
+      });
+
+      // ========== SCROLL ANIMATIONS ==========
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.animateOnScrollElements.forEach(el => observer.observe(el));
+
+      // ========== INITIALIZE ==========
+      setupRealtimeValidation();
+      showSection('inicio');
+      
+      console.log('✅ Sistema FRENTE GCM inicializado com sucesso!');
+    });
+  </script>
+</body>
+</html>
